@@ -83,7 +83,7 @@ export function createTaskUser(userId, taskId) {
             }, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
-            dispatch(addTaskUser(response.data))
+            dispatch(getTaskUser(response.data))
         } catch (e) {
             console.log(e)
             // console.log(e)

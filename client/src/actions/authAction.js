@@ -2,6 +2,7 @@ import { notification } from 'antd'
 import axios from 'axios'
 import { API_URL } from '../config/config'
 import { setCurrentUser, setIsRegister } from '../store/authReducer'
+import { getUser } from './mainAction'
 
 export function registrationUser({ firstName, lastName, patronymic, email, password, departamentId }) {
     return async dispatch => {
@@ -20,6 +21,7 @@ export function registrationUser({ firstName, lastName, patronymic, email, passw
             } else {
                 dispatch(setCurrentUser(response.data))
                 dispatch(setIsRegister(true))
+                dispatch(getUser())
                 notification.success( {
                     message: 'Успешная регистрация',
                     description:
@@ -49,14 +51,43 @@ export function authUser({ email, password }) {
             } else {
                 dispatch(setCurrentUser(response.data))
                 dispatch(setIsRegister(true))
+                localStorage.setItem('token', response.data.token)
                 notification.success( {
                     message: 'Успешная регистрация',
                     description:
-                    `Успешно зарегистрирован - ${response.data.email}`,
+                    `Успешно зарегистрирован - ${response.data.user.email}`,
                   })
             }
         } catch (e) {
-            alert(e.response.data.message)
+            console.log(e)
+        }
+    }
+}
+
+export function currentUser() {
+    return async dispatch => {
+        try {
+                let response = await axios.get(`${API_URL}api/user/auth`,
+                    {
+                        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                    })       
+            if (response.data.error) {
+                notification.error( {
+                    message: 'Ошибка авторизации',
+                    description:
+                    response.data.error,
+                  })
+            } else {
+                dispatch(setCurrentUser(response.data))
+                dispatch(setIsRegister(true))
+                notification.success( {
+                    message: 'Успешная регистрация',
+                    description:
+                    `Успешно зарегистрирован - ${response.data.user.email}`,
+                  })
+            }
+        } catch (e) {
+            console.log(e)
         }
     }
 }

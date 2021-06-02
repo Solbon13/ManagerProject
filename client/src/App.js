@@ -1,6 +1,7 @@
 import { Layout } from 'antd';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { currentUser } from './actions/authAction';
 
 import { getDepartament, getTaskList, getUser } from './actions/mainAction';
 import { getTask, getTaskUser } from './actions/taskAction';
@@ -21,6 +22,7 @@ function App() {
     dispatch(getTaskList())
     dispatch(getUser())
     dispatch(getTaskUser())
+    dispatch(currentUser())
 
   return (
     <BrowserRouter>

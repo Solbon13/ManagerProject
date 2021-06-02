@@ -2,6 +2,7 @@ import { Button, Drawer } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import FormUser from "../FormUser/FormUser";
+import PersonalArea from "../PersonalArea/PersonalArea";
 
 const MyDrawer = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -29,11 +30,7 @@ const MyDrawer = () => {
         onClose={onClose}
         visible={visible}
       >
-        {
-        /*
-        TODO сделать личный кабинет
-        */}
-        {currentUser ? "Нужно пользака" : <FormUser isRegister={isRegister} />}
+        {currentUser ? <PersonalArea /> : <FormUser isRegister={isRegister} />}
         <Button type="text" ghost onClick={() => setRegister(!isRegister)}>
           {isRegister ? "Вход" : currentUser ? "Выход" : "Регистрация"}
         </Button>
