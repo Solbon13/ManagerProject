@@ -1,6 +1,7 @@
-const Router = require('express')
+import { Router } from 'express';
+const router = Router()
+
 const taskUserController = require('../controllers/taskUserController')
-const router = new Router()
 
 //пример
 router.get('/', taskUserController.getAll)

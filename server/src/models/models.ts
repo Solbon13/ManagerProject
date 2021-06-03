@@ -1,6 +1,6 @@
 const sequelize = require('../config/db')
 const { DataTypes } = require('sequelize')
-
+  
 const Departament = sequelize.define('departament', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING },
@@ -13,6 +13,7 @@ const User = sequelize.define('user', {
     patronymic: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING, unique: true, },
     password: { type: DataTypes.STRING },
+    role: { type: DataTypes.STRING },
 })
 
 Departament.hasMany(User)

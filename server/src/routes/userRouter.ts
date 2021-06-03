@@ -1,5 +1,6 @@
-const Router = require('express')
-const router = new Router()
+import { Router } from 'express';
+const router = Router()
+
 const userController = require('../controllers/userController')
 const authMiddleware = require('../middleware/authMiddleware')
 
