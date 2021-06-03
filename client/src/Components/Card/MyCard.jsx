@@ -1,9 +1,6 @@
 import { Card, Modal, Form, Input, DatePicker, Button, Select } from "antd";
 import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined
-} from "@ant-design/icons";
+  EditOutlined} from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import moment from "moment";
@@ -108,8 +105,6 @@ const MyCard = ({ listId, taskList, dragStartHandler }) => {
     form.resetFields();
     setIsModalVisible(false);
   };
-
-  const [currentList, setCurrentList] = useState(null);
 
   const dragOverHandler = (e) => {
     e.preventDefault();

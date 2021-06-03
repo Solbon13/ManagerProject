@@ -58,7 +58,7 @@ const MyList = () => {
               <MyCard
                 listId={item.id}
                 taskList={taskList}
-                currentCard={currentCard}
+                // currentCard={currentCard}
                 dragStartHandler={dragStartHandler}
               />
             </Panel>

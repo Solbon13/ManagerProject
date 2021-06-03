@@ -6,7 +6,6 @@ node_modules
 .pnp.js
 readme.js
 backup*
-.env
 
 # testing
 /coverage

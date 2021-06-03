@@ -78,7 +78,7 @@ export function currentUser() {
                     response.data.error,
                   })
             } else {
-                dispatch(setCurrentUser(response.data))
+                dispatch(setCurrentUser(response.data.user))
                 dispatch(setIsRegister(true))
                 notification.success( {
                     message: 'Успешная регистрация',
